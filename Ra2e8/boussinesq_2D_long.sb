@@ -1,0 +1,24 @@
+
+#PBS -S /bin/bash
+#PBS -N boussinesq
+#PBS -l select=4:ncpus=20:mpiprocs=20:model=ivy
+#PBS -l walltime=72:00:00
+#PBS -j oe
+
+module load mpi-sgi/mpt
+module load comp-intel
+
+export PATH=$HOME/scripts:$PATH
+
+deactivate
+unset PYTHONPATH
+source ~/miniconda3/etc/profile.d/conda.sh
+export PYTHONNOUSERSITE=1
+
+conda activate dedalus
+
+# support lots of text output to stdio for analysis
+export MPI_UNBUFFERED_STDIO=true
+
+mpiexec_mpt -np 64 python3 conv.py
+

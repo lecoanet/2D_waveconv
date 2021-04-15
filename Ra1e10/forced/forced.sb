@@ -1,0 +1,28 @@
+
+#PBS -S /bin/bash
+#PBS -N forced
+#PBS -l select=10:ncpus=20:mpiprocs=20:model=ivy
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -W group_list=s1647
+
+module load mpi-sgi/mpt
+module load comp-intel
+
+export PATH=$HOME/scripts:$PATH
+
+deactivate
+unset PYTHONPATH
+source ~/miniconda3/etc/profile.d/conda.sh
+export PYTHONNOUSERSITE=1
+
+conda activate dedalus
+
+# support lots of text output to stdio for analysis
+export MPI_UNBUFFERED_STDIO=true
+
+for i in {1..20}
+do
+    mpiexec_mpt -np 200 python3 forced.py $i
+done
+

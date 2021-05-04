@@ -84,9 +84,12 @@ freq_eig = freq_eig[mask]
 freq_spacing = freq_spacing[mask]
 
 spec = 2e-5 * (freq_eig/freq[0]) * (freq_eig)**(-13/2) * (k)**(3)
-
 E_mode = spec*(freq_spacing/freq_eig)*ratio/gamma
 ux_mode = 0.3*(freq_eig*1.3)/k * np.sqrt(E_mode)
+
+spec = 2e-5 * (freq_eig)**(-13/2) * (k)**(3)
+E_mode = spec * (freq_spacing/gamma**2) * ratio
+ux_mode = 2.5 * np.sqrt(E_mode)
 
 white = np.array((1,1,1))
 dark_goldenrod = np.array((184/255,134/255, 11/255))
@@ -108,8 +111,8 @@ plot_axes.set_ylim([1e-7, 1e-1])
 
 plot_axes.text(0.5,1.07,r'$\ell=1$',va='center',ha='center',fontsize=fontsize,transform=plot_axes.transAxes)
 
-plot_axes.set_xlabel(r'$f/N$', fontsize=fontsize)
-plot_axes.set_ylabel(r'$|\hat{u}_x|_{z=L}$', fontsize=fontsize)
+plot_axes.set_xlabel(r'$2\pi\, f/N$', fontsize=fontsize)
+plot_axes.set_ylabel(r'$|\hat{u}_x|_{z=1}$', fontsize=fontsize)
 
 plot_axes.text(-0.24,1.12,r'$C^{10}$',va='center',ha='left',fontsize=18,transform=plot_axes.transAxes)
 

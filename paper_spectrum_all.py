@@ -79,7 +79,9 @@ a_list = [3, 3, 3]
 b_list = [-15/2,-13/2,-13/2]
 
 #mode_fudge = [0.005, 5, 0.2]
-mode_fudge = [0.05, 1.5, 0.3]
+#mode_fudge = [0.05, 1.5, 0.3]
+#mode_fudge = [0.03, 1, 0.2]
+mode_fudge = [1, 10, 2.5]
 tau_list = [1.19, 1.27, 1.3]
 freq_T_list = []
 ux_T_list = []
@@ -121,6 +123,17 @@ for i in range(3):
 #        E_mode = 10*spec*(freq_spacing/freq_eig)*ratio/gamma
 #        E_mode = mode_fudge[i]*spec/kx_list[j]*ratio/gamma
         ux_mode = mode_fudge[i]*(freq_eig*tau_list[i])/kx_list[j] * np.sqrt(E_mode)
+
+#        spec = amp_list[i] / freq_list[i][0] * (freq_eig)**(b_list[i]) * (kx_list[j])**(a_list[i])
+#        E_mode = spec * (freq_spacing/gamma) / (gamma*tau_list[i]) * ratio
+#        ux_mode = mode_fudge[i] * np.sqrt(E_mode)
+
+        spec = amp_list[i] * (freq_eig)**(b_list[i]) * (kx_list[j])**(a_list[i])
+        E_mode = spec / gamma * (freq_spacing/gamma) * ratio
+        ux_mode = mode_fudge[i] * np.sqrt(E_mode)
+
+#        if i == 2: print(1/np.sqrt(gamma*tau_list[i]))
+
         freq_eig_list.append(freq_eig)
         mode_amp_list.append(ux_mode)
 
@@ -185,11 +198,11 @@ for j in range(4):
 
 for i in range(3):
     ax = plot_axes[4*i+3]
-    ax.set_xlabel(r'$f/N$', fontsize=fontsize)
+    ax.set_xlabel(r'$2\pi\, f/N$', fontsize=fontsize)
 
 for j in range(4):
     ax = plot_axes[j]
-    ax.set_ylabel(r'$|\hat{u}_x|_{z=L}$', fontsize=fontsize)
+    ax.set_ylabel(r'$|\hat{u}_x|_{z=1}$', fontsize=fontsize)
 
 plt.savefig('figures/spectrum_all.eps')
 #plt.savefig('figures/spectrum_all.png')

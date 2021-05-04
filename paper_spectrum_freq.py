@@ -126,10 +126,10 @@ for i in range(3):
 lg = plot_axes[0].legend(loc='upper left', ncol=2)
 lg.draw_frame(False)
 
-plot_axes[2].set_xlabel(r'$f/N$', fontsize=fontsize)
+plot_axes[2].set_xlabel(r'$2\pi\, f/N$', fontsize=fontsize)
 
 for i in range(3):
-    plot_axes[i].set_ylabel(r'$|\hat{u}_x|_{z=L}$', fontsize=fontsize)
+    plot_axes[i].set_ylabel(r'$|\hat{u}_x|_{z=1}$', fontsize=fontsize)
 
 sim_num = [8, 9, 10]
 

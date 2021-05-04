@@ -122,7 +122,7 @@ for i in range(3):
       ax = plot_axes[2*i+j]
       plt.setp(ax.get_yticklabels(), visible=False)
 
-text = [r'$\ell=2$',r'$\dfrac{f}{N}=0.2$',r'$\ell=5$',r'$\dfrac{f}{N}=0.5$',r'$\ell=10$',r'$\dfrac{f}{N}=0.8$']
+text = [r'$\ell=2$',r'$\dfrac{2\pi\, f}{N}=0.2$',r'$\ell=5$',r'$\dfrac{2\pi\, f}{N}=0.5$',r'$\ell=10$',r'$\dfrac{2\pi\, f}{N}=0.8$']
 for i in range(3):
   for j in range(2):
     ax = plot_axes[2*i+j]
@@ -158,7 +158,7 @@ for i in range(3):
   for j in range(2):
     ax = plot_axes[2*i+j]
     if j == 0:
-      ax.set_xlabel(r'$f/N$', fontsize=fontsize)
+      ax.set_xlabel(r'$2\pi\, f/N$', fontsize=fontsize)
     elif j == 1:
       ax.set_xlabel(r'$\ell$', fontsize=fontsize)
 

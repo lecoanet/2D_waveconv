@@ -96,11 +96,11 @@ for i in range(2):
 #    ax.text(0.5,0.1,r'$%i \tau_c < t < %i \tau_c$' %(t_start[i], t_end[i]),va='center',ha='center',fontsize=fontsize,transform=ax.transAxes)
     ax.text(0.05,0.1,r'$%i \tau_c < t < %i \tau_c$' %(t_start[i], t_end[i]),va='center',ha='left',fontsize=fontsize,transform=ax.transAxes)
 
-plot_axes[1].set_xlabel(r'$f/N$', fontsize=fontsize)
+plot_axes[1].set_xlabel(r'$2\pi\, f/N$', fontsize=fontsize)
 
 for i in range(2):
     ax = plot_axes[i]
-    ax.set_ylabel(r'$\left|\hat{u}_x\right|_{z=L}$', fontsize=fontsize)
+    ax.set_ylabel(r'$\left|\hat{u}_x\right|_{z=1}$', fontsize=fontsize)
 
 
 ax = plot_axes[0]

@@ -143,9 +143,9 @@ for i in range(3):
       slice_axes[i].yaxis.set_major_locator(MaxNLocator(nbins=5,prune='upper'))
 
 for slice_axis in slice_axes:
-  slice_axis.set_ylabel(r'$z/L$', fontsize=fontsize)
+  slice_axis.set_ylabel(r'$z$', fontsize=fontsize)
 
-slice_axes[-1].set_xlabel(r'$x/L$', fontsize=fontsize)
+slice_axes[-1].set_xlabel(r'$x$', fontsize=fontsize)
 
 # colorbar
 cbar_top_axes = fig.colorbar(c_im[0], cax=cbar_top, orientation='horizontal', ticks=[0, 0.5, 1])
@@ -155,7 +155,7 @@ cbar_top.xaxis.set_ticks_position('top')
 cbars = []
 for i in range(3):
   cbars.append( fig.colorbar(c_im[2*i+1], cax=cbar_right[i], orientation='vertical', ticks=MaxNLocator(nbins=3)) )
-  cbar_right[i].text(3,1,r'$\omega$',va='center',ha='center',fontsize=fontsize,transform=cbar_right[i].transAxes)
+  cbar_right[i].text(3,1,r'$\omega_y$',va='center',ha='center',fontsize=fontsize,transform=cbar_right[i].transAxes)
 
 plt.savefig('figures/convection.png',dpi=600)
 
